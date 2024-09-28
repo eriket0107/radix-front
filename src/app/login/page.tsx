@@ -8,7 +8,6 @@ export const Login = () => {
     <Card className="flex min-h-screen flex-col items-center justify-items-center  p-4">
       <div className="flex flex-col items-center gap-8">
         <h1 className="place-items-center text-5xl">Home</h1>
-
         <Tabs
           defaultValue="login"
           className="pb m-auto w-[400px] rounded-md pb-4"
@@ -23,7 +22,6 @@ export const Login = () => {
             value="login"
             className="flex flex-col items-center gap-4"
           >
-            <h3>Login</h3>
             <form className="flex flex-col items-center gap-3 bg-transparent">
               <label htmlFor="email">
                 Email
@@ -44,7 +42,6 @@ export const Login = () => {
             value="create_acount"
             className="flex flex-col items-center gap-4"
           >
-            <h3>Cria a sua conta</h3>
             <form className="flex flex-col items-center gap-3 bg-transparent">
               <label htmlFor="email">
                 Nome
