@@ -1,5 +1,5 @@
 import Axios from 'axios'
 
-export const axios = Axios.create({
+export const api = Axios.create({
   baseURL: process.env.BASE_API_URL,
 })
