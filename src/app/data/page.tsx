@@ -1,7 +1,7 @@
 import { CsvFiles, MeanByPeriod } from '@/@types'
 import { Chart } from '@/components/Chart'
-import { FormCsv } from '@/components/FormCsv'
-import { ViewCsv } from '@/components/ViewCsv'
+import { FormCsv } from '@/components/FormInputCsv'
+import { TableCsvs } from '@/components/TableCsvs'
 import { api } from '@/lib/axios'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 const getSensorData = async () => {
@@ -39,7 +39,7 @@ export default async function SensorData() {
           <Chart chartData={meanByPeriod} />
         </TabsContent>
         <TabsContent value="csv" className="flex flex-col gap-4">
-          <ViewCsv data={csvFiles} />
+          <TableCsvs data={csvFiles} />
           <FormCsv />
         </TabsContent>
       </Tabs>

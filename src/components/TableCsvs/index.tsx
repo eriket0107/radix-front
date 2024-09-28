@@ -9,7 +9,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-export const ViewCsv = ({ data }: { data: CsvFiles }) => {
+export const TableCsvs = ({ data }: { data: CsvFiles }) => {
   const { csvFiles } = data
   const hasData = csvFiles.length > 0
 
