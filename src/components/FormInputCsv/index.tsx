@@ -19,6 +19,7 @@ export const FormCsv = () => {
         <Input
           type="file"
           accept=".csv"
+          className="cursor-pointer hover:opacity-60"
           {...inputCsvFormMethods.register('csvFile', {
             onChange: handleFileChange,
           })}

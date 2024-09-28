@@ -8,8 +8,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-import { MeanByPeriod } from '@/@types'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { useGetMeanByPeriod } from '@/hooks/useGetMeanByPeriod'
 
 const chartConfig = {
   mean: {
@@ -18,7 +18,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export const Chart = ({ chartData = [] }: { chartData: MeanByPeriod }) => {
+export const ChartMeanByPeriod = () => {
+  const { data } = useGetMeanByPeriod()
+
   return (
     <Card className="w-[600px] rounded-t-none">
       <CardHeader>
@@ -32,7 +34,7 @@ export const Chart = ({ chartData = [] }: { chartData: MeanByPeriod }) => {
         config={chartConfig}
         className="min-h-[200px] w-[600px] rounded-sm"
       >
-        <BarChart accessibilityLayer data={chartData}>
+        <BarChart accessibilityLayer data={data}>
           <CartesianGrid vertical={false} />
           <XAxis
             dataKey="period"

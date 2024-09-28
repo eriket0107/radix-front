@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useFetch } from './useFech'
 import { toast } from 'sonner'
+import { useGetCSVFiles } from './useGetCsvFiles'
 
 const schema = z.object({
   csvFile: z.custom<FileList>((value) => value instanceof FileList, {
@@ -16,6 +17,7 @@ export const useInputCsv = () => {
   const inputCsvFormMethods = useForm<ImportCsvFileForm>({
     resolver: zodResolver(schema),
   })
+  const { mutate: fetchMoreCsvData } = useGetCSVFiles()
   const [file, setFile] = useState<FileList | null>(null)
   const [postForm, { loading }] = useFetch()
 
@@ -35,6 +37,7 @@ export const useInputCsv = () => {
       },
       onSuccess: () => {
         toast.success('CSV importado com sucesso!')
+        fetchMoreCsvData()
       },
       onError: () => {
         toast.error('Falha ao importar CSV')
