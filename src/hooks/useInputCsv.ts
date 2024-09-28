@@ -12,8 +12,8 @@ const schema = z.object({
 })
 
 type ImportCsvFileForm = z.infer<typeof schema>
-export const useFormCsv = () => {
-  const formMethods = useForm<ImportCsvFileForm>({
+export const useInputCsv = () => {
+  const inputCsvFormMethods = useForm<ImportCsvFileForm>({
     resolver: zodResolver(schema),
   })
   const [file, setFile] = useState<FileList | null>(null)
@@ -25,7 +25,7 @@ export const useFormCsv = () => {
     }
   }
 
-  const handleSubmit = async (data: ImportCsvFileForm) => {
+  const handleSubmitCsvInput = async (data: ImportCsvFileForm) => {
     const body = data.csvFile
     return await postForm('/input-csv', body, {
       method: 'post',
@@ -42,5 +42,11 @@ export const useFormCsv = () => {
     })
   }
 
-  return { file, handleFileChange, formMethods, handleSubmit, loading }
+  return {
+    file,
+    handleFileChange,
+    inputCsvFormMethods,
+    handleSubmitCsvInput,
+    loading,
+  }
 }
