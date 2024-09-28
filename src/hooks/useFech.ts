@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AxiosError, AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { api } from '@/lib/axios'
 
 type useFetchOptions<T> = {
@@ -9,6 +9,7 @@ type useFetchOptions<T> = {
   headers?: Record<string, string>
   responseType?: 'json' | 'blob'
 }
+api.defaults.baseURL = 'http://localhost:3333'
 
 export function useFetch<T>() {
   const [data, setData] = useState<T | null>(null)
@@ -38,7 +39,7 @@ export function useFetch<T>() {
       } else if (method === 'put') {
         response = await api.put<T>(url, body, { headers })
       } else if (method === 'delete') {
-        response = await api.delete<T>(url, { data: body, headers })
+        response = await axios.delete<T>(url, { data: body, headers })
       } else {
         throw new Error(`Unsupported method: ${method}`)
       }
