@@ -19,7 +19,6 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export const Chart = ({ chartData = [] }: { chartData: MeanByPeriod }) => {
-  console.log(chartData)
   return (
     <Card className="w-[600px] rounded-t-none">
       <CardHeader>
