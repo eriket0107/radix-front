@@ -64,6 +64,8 @@ export const TableCsvs = () => {
               <TableCell className="bg-gray-200 hover:bg-gray-50">
                 Nenhum arquivo encontrado
               </TableCell>
+              <TableCell className="bg-gray-200 hover:bg-gray-50" />
+              <TableCell className="bg-gray-200 hover:bg-gray-50" />
             </TableRow>
           )}
         </TableBody>
