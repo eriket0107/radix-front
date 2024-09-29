@@ -1,9 +1,12 @@
+import { CsvFile } from '@/@types'
 import { fetchCsvs } from '@/services/csv'
 import useSWR from 'swr'
 
 export const useGetCSVFiles = () => {
-  const { data, mutate, isLoading } = useSWR('/list-csv', fetchCsvs)
-  const hasData = data && data.length > 0
-
-  return { data, mutate, isLoading, hasData }
+  const { data, mutate, isLoading } = useSWR('/list-csv', fetchCsvs, {
+    shouldRetryOnError: false,
+  })
+  const csvFiles = data as CsvFile[]
+  const hasData = csvFiles && !!csvFiles.length
+  return { data: csvFiles, mutate, isLoading, hasData }
 }

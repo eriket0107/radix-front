@@ -31,7 +31,6 @@ const TableSkeleton = () => {
 
 export const TableCsvs = () => {
   const { data, hasData, isLoading } = useGetCSVFiles()
-
   return (
     <Card className="h-max[500px] w-[600px] overflow-auto rounded-t-none pb-4">
       <Table>

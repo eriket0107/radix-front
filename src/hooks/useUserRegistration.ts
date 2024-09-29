@@ -13,11 +13,10 @@ const RegistrationSchema = z.object({
 type RegistrationType = z.infer<typeof RegistrationSchema>
 
 export const useUserRegistration = () => {
-  const [register, { loading, error }] = useFetch()
+  const [register, { loading }] = useFetch()
   const methods = useForm<RegistrationType>({
     resolver: zodResolver(RegistrationSchema),
   })
-  console.log(error)
   const handleSubmit = async ({ email, name, password }: RegistrationType) => {
     const body = { email, name, password }
     return await register('/user-register', body, {
@@ -25,7 +24,8 @@ export const useUserRegistration = () => {
       onSuccess: () => {
         toast.success('Usuário criado com sucesso!')
       },
-      onError: () => {
+      onError: (error) => {
+        console.error(error)
         toast.error('Falha ao criar usuário')
       },
     })
