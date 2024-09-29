@@ -29,7 +29,7 @@ export const useUserLogin = () => {
       onSuccess: (response) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        api.defaults.headers.common.Authorization = `Bearer ${response.data.token}`
+        api.defaults.headers.Authorization = `Bearer ${response.data.token}`
         toast.success('Login com sucesso!')
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore

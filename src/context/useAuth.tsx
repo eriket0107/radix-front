@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
   const router = useRouter()
 
   const { token } = cookies.get(null, 'token') || null
+
   if (token) {
     api.defaults.headers.common.Authorization = `Bearer ${token}`
   } else {
