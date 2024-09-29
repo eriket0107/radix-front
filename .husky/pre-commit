@@ -1,1 +1,1 @@
-npm next lint
+npm run lint
