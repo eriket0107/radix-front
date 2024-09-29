@@ -1,4 +1,3 @@
-import { CsvFiles } from '@/@types'
 import { fetchCsvs } from '@/services/csv'
 import useSWR from 'swr'
 
