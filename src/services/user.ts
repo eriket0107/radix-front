@@ -8,9 +8,11 @@ export const resfreshToken = async () => {
 
     api.defaults.headers.common.Authorization = `Bearer ${data.token}`
     cookies.set(null, 'token', data.token, { path: '/' })
+
     return data
   } catch (error) {
-    console.log(error)
+    console.error(error)
+    return error
   }
 }
 
@@ -24,5 +26,6 @@ export const fetchUser = async () => {
     if ((error as Error)?.status === 401) {
       resfreshToken()
     }
+    throw error
   }
 }

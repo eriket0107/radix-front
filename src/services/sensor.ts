@@ -7,7 +7,7 @@ export const fetchMeanbyPeriod = async () => {
       await api.get<MeanByPeriod>('/mean-by-period')
     return meanByPeriod
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return error as Error
   }
 }

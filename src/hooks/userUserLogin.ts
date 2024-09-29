@@ -39,7 +39,7 @@ export const useUserLogin = () => {
         router.push('/sensor-data')
       },
       onError: (error) => {
-        console.log(error)
+        console.error(error)
         toast.error('Falha ao Logar.')
       },
     })

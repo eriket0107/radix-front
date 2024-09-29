@@ -5,7 +5,7 @@ export type PeriodMean = {
 
 export type MeanByPeriod = PeriodMean[]
 
-type CsvFile = {
+export type CsvFile = {
   id: string
   createdAt: string
   updatedAt: string

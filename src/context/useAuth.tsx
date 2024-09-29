@@ -1,11 +1,12 @@
 import { createContext, useContext } from 'react'
 import cookies from 'nookies'
 import { api } from '@/lib/axios'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { LogoutButton } from '@/components/LogoutButton'
 import useSWR from 'swr'
 import { fetchUser } from '@/services/user'
 import { User } from '@/@types'
+import { toast } from 'sonner'
 
 type AuthProviderType = {
   children: React.ReactNode
@@ -23,16 +24,22 @@ const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: AuthProviderType) => {
   const { data } = useSWR('/get-user', fetchUser)
-  const sessionUser = data || null
+  const sessionUser = data
   const pathname = usePathname()
-
-  const { token } = cookies.get(null, 'token') || null
+  const router = useRouter()
+  const { token } = cookies.get(null, 'token')
 
   if (token) {
     api.defaults.headers.common.Authorization = `Bearer ${token}`
   }
+  if (!sessionUser && !token) {
+    cookies.destroy(null, 'token')
+    router.push('/')
+    toast.error('Usuário não encontrado')
+  }
 
   const isLogin = pathname === '/'
+
   return (
     <AuthContext.Provider value={{ token, sessionUser }}>
       {!isLogin && <LogoutButton />}

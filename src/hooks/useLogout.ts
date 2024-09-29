@@ -18,7 +18,7 @@ export const useLogout = () => {
           router.push('/')
         },
         onError: (error) => {
-          console.log(error)
+          console.error(error)
           toast.error('Falha ao deslogar.')
         },
       },
