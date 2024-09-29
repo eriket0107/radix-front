@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { LogoutButton } from '@/components/LogoutButton'
 import useSWR from 'swr'
 import { fetchUser } from '@/services/user'
+import { User } from '@/@types'
 
 type AuthProviderType = {
   children: React.ReactNode
@@ -12,17 +13,17 @@ type AuthProviderType = {
 
 type AuthContextType = {
   token: string | null
-  sessionUser: object
+  sessionUser?: User | null
 }
 
 const AuthContext = createContext<AuthContextType>({
   token: null,
-  sessionUser: {},
+  sessionUser: null,
 })
 
 export const AuthProvider = ({ children }: AuthProviderType) => {
   const { data } = useSWR('/get-user', fetchUser)
-  const sessionUser = data || {}
+  const sessionUser = data || null
   const pathname = usePathname()
   const router = useRouter()
 

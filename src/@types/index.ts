@@ -16,3 +16,10 @@ type CsvFile = {
 export type CsvFiles = {
   csvFiles: CsvFile[]
 }
+
+export type User = {
+  id: string
+  name: string
+  email: string
+  role: string
+}
