@@ -30,9 +30,9 @@ export function useFetch<T>() {
     const method = options?.method || 'post'
     const headers = options?.headers || {}
     const responseType = options?.responseType || 'json'
-    const token = cookies.get(null, 'token')
+    const { token } = cookies.get(null, 'token')
 
-    headers.Authorization = `Bearer ${token}`
+    api.defaults.headers.Authorization = `Bearer ${token}`
 
     try {
       let response: AxiosResponse<T>
