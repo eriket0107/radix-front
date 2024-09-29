@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import { api } from '@/lib/axios'
+import cookies from 'nookies'
 
 type useFetchOptions<T> = {
   onSuccess?: (response: AxiosResponse<T>) => void
@@ -9,9 +10,10 @@ type useFetchOptions<T> = {
   headers?: Record<string, string>
   responseType?: 'json' | 'blob'
 }
-api.defaults.baseURL = 'http://localhost:3333'
 
 export function useFetch<T>() {
+  api.defaults.baseURL = 'http://localhost:3333'
+
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
@@ -28,6 +30,9 @@ export function useFetch<T>() {
     const method = options?.method || 'post'
     const headers = options?.headers || {}
     const responseType = options?.responseType || 'json'
+    const token = cookies.get(null, 'token')
+
+    headers.Authorization = `Bearer ${token}`
 
     try {
       let response: AxiosResponse<T>
@@ -39,7 +44,7 @@ export function useFetch<T>() {
       } else if (method === 'put') {
         response = await api.put<T>(url, body, { headers })
       } else if (method === 'delete') {
-        response = await axios.delete<T>(url, { data: body, headers })
+        response = await api.delete<T>(url, { data: body, headers })
       } else {
         throw new Error(`Unsupported method: ${method}`)
       }
