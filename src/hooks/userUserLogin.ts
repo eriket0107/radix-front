@@ -27,9 +27,13 @@ export const useUserLogin = () => {
       method: 'post',
 
       onSuccess: (response) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         api.defaults.headers.common.Authorization = `Bearer ${response.data.token as string}`
         toast.success('Login com sucesso!')
-        cookies.set(null, 'token', response.data?.token as unknown as string, {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        cookies.set(null, 'token', response.data.token as unknown as string, {
           path: '/',
         })
         router.push('/sensor-data')

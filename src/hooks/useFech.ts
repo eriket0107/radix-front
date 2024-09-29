@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 import { api } from '@/lib/axios'
 import cookies from 'nookies'
 
