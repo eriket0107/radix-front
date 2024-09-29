@@ -4,8 +4,6 @@
 ## User creation 
 - The password must have length of 8 and special characters like (!, @, #) 
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 Make sure that have settled up all the required variables
