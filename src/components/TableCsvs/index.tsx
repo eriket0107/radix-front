@@ -31,6 +31,7 @@ const TableSkeleton = () => {
 
 export const TableCsvs = () => {
   const { data, hasData, isLoading } = useGetCSVFiles()
+  console.log({ data })
   return (
     <Card className="h-max[500px] w-[600px] overflow-auto rounded-t-none pb-4">
       <Table>
@@ -45,7 +46,6 @@ export const TableCsvs = () => {
         <TableBody className="w-[600px]">
           {isLoading && <TableSkeleton />}
           {!isLoading &&
-            hasData &&
             data?.map((csvFile) => (
               <TableRow className="w-[600px] bg-gray-100" key={csvFile.id}>
                 <TableCell className="bg-gray-200 hover:bg-gray-50">

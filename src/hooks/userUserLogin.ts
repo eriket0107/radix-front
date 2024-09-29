@@ -40,11 +40,10 @@ export const useUserLogin = () => {
       },
       onError: (error) => {
         console.error(error)
-        toast.error('Falha ao Logar.')
+        toast.error('Falha ao logar.')
       },
     })
   }
-
   return {
     handleSubmit,
     methods,

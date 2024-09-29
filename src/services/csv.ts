@@ -4,7 +4,8 @@ import { api } from '@/lib/axios'
 export const fetchCsvs = async () => {
   try {
     const { data } = await api.get<CsvFiles>('/list-csv')
-    return data
+    const { csvFiles } = data
+    return csvFiles
   } catch (error) {
     console.error(error)
     return error
