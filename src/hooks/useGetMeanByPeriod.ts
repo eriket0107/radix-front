@@ -1,3 +1,4 @@
+import { MeanByPeriod } from '@/@types'
 import { fetchMeanbyPeriod } from '@/services/sensor'
 import useSWR from 'swr'
 export const useGetMeanByPeriod = () => {
@@ -11,6 +12,6 @@ export const useGetMeanByPeriod = () => {
       },
     },
   )
-
-  return { data, mutate, isLoading }
+  const meanByPeriod = data as MeanByPeriod
+  return { data: meanByPeriod, mutate, isLoading }
 }

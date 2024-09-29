@@ -6,7 +6,7 @@ import { useLogout } from '@/hooks/useLogout'
 export const LogoutButton = () => {
   const { handleLogout } = useLogout()
   return (
-    <Button variant={'ghost'} className="flex gap-1" onClick={handleLogout}>
+    <Button variant={'ghost'} className="flex gap-1 p-1" onClick={handleLogout}>
       Sair <LogOut size={14} />
     </Button>
   )

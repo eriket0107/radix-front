@@ -22,7 +22,7 @@ export const ChartMeanByPeriod = () => {
   const { data } = useGetMeanByPeriod()
 
   return (
-    <Card className="w-[600px] rounded-t-none">
+    <Card className="h-[476px] w-[600px] rounded-t-none">
       <CardHeader>
         <CardTitle className="flex gap-1">
           Valores médios <TrendingUp />

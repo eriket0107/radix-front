@@ -8,6 +8,6 @@ export const fetchMeanbyPeriod = async () => {
     return meanByPeriod
   } catch (error) {
     console.error(error)
-    return error as Error
+    return error
   }
 }

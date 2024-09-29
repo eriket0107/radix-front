@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 
 export default async function SensorData() {
   return (
-    <div className="flex h-screen w-full items-center justify-center">
+    <div className="flex  w-full flex-col items-center justify-center">
       <Tabs
         defaultValue="csv"
         className="h-min-[900px]   w-[600px] rounded-md pb-4 "
@@ -28,11 +28,11 @@ export default async function SensorData() {
         <TabsContent value="graph">
           <ChartMeanByPeriod />
         </TabsContent>
-        <TabsContent value="csv" className="flex flex-col gap-4">
+        <TabsContent value="csv" className="flex flex-col">
           <TableCsvs />
-          <FormCsv />
         </TabsContent>
       </Tabs>
+      <FormCsv />
     </div>
   )
 }
